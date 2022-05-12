@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classes-Summative Exercise</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+      integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Add new Film FOrm -->
+      <form class="form" align="center" id="addMovie">
+        <h2>Add New Film</h2>
+        <p>
+          <label for="movieTitle">Title</label>
+          <br />
+          <input type="text" class="form-control" id="movieTitle" required />
+        </p>
+        <p>
+          <label for="movieYear">Year of Release</label>
+          <br />
+          <input
+            type="number"
+            class="form-control"
+            id="movieYear"
+            min="1800"
+            required
+          />
+        </p>
+        <label for="movieDirector">Director Name</label>
+        <div class="input-group">
+          <select
+            class="form-select"
+            id="movieDirector"
+            aria-label="Example select with button addon"
+          >
+            <option value="Martin Scorsese">Martin Scorsese</option>
+            <option value="Steven Spielberg">Steven Spielberg</option>
+          </select>
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            data-toggle="modal"
+            data-target="#addDirector"
+          >
+            Add Other
+          </button>
+        </div>
+        <p>
+          <label for="movieDuration">Duration (in minutes)</label>
+          <br />
+          <input
+            type="number"
+            class="form-control"
+            id="movieDuration"
+            required
+          />
+        </p>
+        <p>
+          <label for="movieActors"
+            >Actors Names (Ex: Actor1,Actor2,Actor3)</label
+          >
+          <br />
+          <input type="text" class="form-control" id="movieActors" />
+        </p>
+        <input type="submit" class="btn btn-primary" value="Add Film" />
+        <input type="reset" class="btn btn-danger" value="Reset" />
+        <button type="button" class="btn btn-warning" id="clearDirectors">
+          Clear Custom Directors
+        </button>
+      </form>
+      <br />
+
+      <div class="d-grid d-flex justify-content-end">
+        <button class="btn btn-danger" type="button" id="clearTableBtn">
+          Clear Table
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          id="filterBtn"
+          data-toggle="modal"
+          data-target="#extraInfo"
+        >
+          +Info
+        </button>
+      </div>
+
+      <br />
+      <!-- Table -->
+      <table class="table">
+        <thead align="center">
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Year of Release</th>
+            <th scope="col">Director</th>
+            <th scope="col">Duration (minutes)</th>
+            <th scope="col">Actors</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- Modal (Add Custom Director) -->
+    <div class="modal fade" id="addDirector">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <h5 class="modal-title">Add Director</h5>
+          </div>
+          <form id="addOtherDirector">
+            <div class="modal-body" align="center">
+              <!-- Form Inputs -->
+              <p>
+                <label for="directorName">Name</label>
+                <br />
+                <input
+                  type="text"
+                  id="directorName"
+                  required
+                  style="text-align: center"
+                />
+              </p>
+              <p>
+                <label for="directorBirthDate">Date of Birth</label>
+                <br />
+                <input
+                  type="date"
+                  id="directorBirthDate"
+                  required
+                  style="text-align: center"
+                />
+              </p>
+              <p>
+                <label for="directorCountry">Country</label>
+                <br />
+                <input
+                  type="text"
+                  id="directorCountry"
+                  required
+                  style="text-align: center"
+                />
+              </p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="modal-footer justify-content-center">
+              <input type="submit" class="btn btn-primary" value="Add" />
+              <!-- Close Button -->
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal (+Info) -->
+    <div class="modal fade" id="extraInfo">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="container">
+            <div class="modal-header justify-content-center">
+              <h5 class="modal-title">Extra Info</h5>
+            </div>
+            <br />
+            <!-- All film titles by a given director -->
+            <div class="input-group mb-3">
+              <button
+                id="allFilmTitlesByBtn"
+                class="btn btn-info"
+                type="button"
+              >
+                All film titles by:
+              </button>
+              <input
+                id="allFilmTitlesByEntry"
+                type="text"
+                class="form-control"
+                placeholder="Director Name..."
+                aria-describedby="allFilmTitlesByBtn"
+              />
+            </div>
+
+            <!-- All the titles of the films where a certain actor/actress enters -->
+            <div class="input-group mb-3">
+              <button
+                class="btn btn-info"
+                type="button"
+                id="filmsActorEntersBtn"
+              >
+                Films where an actor enters:
+              </button>
+              <input
+                id="filmsActorEntersEntry"
+                type="text"
+                class="form-control"
+                placeholder="Actor/Actress Name..."
+                aria-describedby="filmsActorEntersBtn"
+              />
+            </div>
+
+            <!-- All films made by directors from a given country -->
+            <div class="input-group mb-3">
+              <button
+                class="btn btn-info"
+                type="button"
+                id="filmsByDirectorCountryBtn"
+              >
+                Films made by directors from:
+              </button>
+              <input
+                id="filmsByDirectorCountryEntry"
+                type="text"
+                class="form-control"
+                placeholder="Country Name..."
+                aria-describedby="filmsByDirectorCountryBtn"
+              />
+            </div>
+
+            <!-- Name of director with the most films -->
+
+            <p>
+              <button
+                type="button"
+                class="btn btn-info w-100"
+                id="directorMostFilmsBtn"
+              >
+                Name of director with the most films
+              </button>
+            </p>
+
+            <div class="modal-footer justify-content-center">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
