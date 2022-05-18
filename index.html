@@ -29,14 +29,19 @@
         <p>
           <label for="movieTitle">Title</label>
           <br />
-          <input type="text" class="form-control" id="movieTitle" required />
+          <input
+            type="text"
+            class="form-control text-center"
+            id="movieTitle"
+            required
+          />
         </p>
         <p>
           <label for="movieYear">Year of Release</label>
           <br />
           <input
             type="number"
-            class="form-control"
+            class="form-control text-center"
             id="movieYear"
             min="1800"
             required
@@ -66,7 +71,7 @@
           <br />
           <input
             type="number"
-            class="form-control"
+            class="form-control text-center"
             id="movieDuration"
             required
           />
@@ -76,7 +81,11 @@
             >Actors Names (Ex: Actor1,Actor2,Actor3)</label
           >
           <br />
-          <input type="text" class="form-control" id="movieActors" />
+          <input
+            type="text"
+            class="form-control text-center"
+            id="movieActors"
+          />
         </p>
         <input type="submit" class="btn btn-primary" value="Add Film" />
         <input type="reset" class="btn btn-danger" value="Reset" />
@@ -268,3 +277,4 @@
     <script type="module" src="index.js"></script>
   </body>
 </html>
+
