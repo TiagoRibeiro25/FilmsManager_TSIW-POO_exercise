@@ -51,6 +51,12 @@ directorForm.addEventListener("submit", () => {
 });
 
 form.addEventListener("submit", () => {
+  //Verify if the new movie/film is already in the list
+  for (let film in films) {
+    if (films[film].title == document.querySelector("#movieTitle").value)
+      return alert("Movie is already in the table!");
+  }
+
   const newMovie = new Movie(
     document.querySelector("#movieTitle").value,
     document.querySelector("#movieYear").value,
